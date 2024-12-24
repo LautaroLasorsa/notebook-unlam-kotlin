@@ -1,0 +1,44 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout codigo
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "11"
+
+      - name: Verificar la instalación de Java
+        run: java -version
+
+      - name: Verificar la instalación de Kotlin
+        run: kotlinc -version
+
+      - name: Hacer el script de tests ejecutable
+        run: chmod +x test.sh
+
+      - name: Ejecutar tests
+        run: |
+          # Ejecuta el script de pruebas
+            ./test.sh || true
+
+            # Verifica si el archivo pruebas_fallidas.txt está vacío
+            if [ -s pruebas_fallidas.txt ]; then
+                echo "Tests failed. See pruebas_fallidas.txt for details." >&2
+                cat pruebas_fallidas.txt
+                exit 1
+            else
+                echo "All tests passed."
+            fi
