@@ -24,6 +24,9 @@ jobs:
           else
               echo "All tests passed."
           fi
+      
+      - name: Listar archivos
+        run: ls -R
 
       - name: Guardar artefactos
         uses: actions/upload-artifact@v3
