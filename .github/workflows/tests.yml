@@ -57,6 +57,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: estado-final
+      
+      - name: Listar archivos
+        run: ls -R
 
       - name: Exito o fallo
         run: |
