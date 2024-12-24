@@ -38,7 +38,20 @@ jobs:
             if [ -s pruebas_fallidas.txt ]; then
                 echo "Tests failed. See pruebas_fallidas.txt for details." >&2
                 echo < pruebas_fallidas.txt >&2
-                exit 1
             else
                 echo "All tests passed."
             fi
+            - name: Guardar artefactos
+      
+      - name: Guardar artefactos
+        uses: actions/upload-artifact@v3
+        with:
+          name: estado-final
+          path: .
+
+      - name: Exito o fallo
+        run: |
+            if [ -s pruebas_fallidas.txt ]; then
+                exit 1
+            else
+                exit 0
