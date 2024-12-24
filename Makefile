@@ -6,3 +6,6 @@ commit: clear.jar
 	git add .
 	git commit -m "$(MENSAJE)"
 	git push
+
+test:
+	bash test.sh
