@@ -7,50 +7,42 @@ on:
   pull_request:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout codigo
-        uses: actions/checkout@v3
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: "temurin"
-          java-version: "11"
-
-      - name: Verificar la instalación de Java
-        run: java -version
-
-      - name: Verificar la instalación de Kotlin
-        run: kotlinc -version
-
-      - name: Hacer el script de tests ejecutable
-        run: chmod +x test.sh
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Ejecutar tests
         run: |
-          # Ejecuta el script de pruebas
-            ./test.sh || true
+          ./test.sh || true
 
-            # Verifica si el archivo pruebas_fallidas.txt está vacío
-            if  [ $(cat pruebas_fallidas.txt | wc -c) -neq 0 ]; then
-                echo "Tests failed. See pruebas_fallidas.txt for details." >&2
-                echo < pruebas_fallidas.txt >&2
-            else
-                echo "All tests passed."
-            fi
-            
+          # Verifica si el archivo pruebas_fallidas.txt está vacío
+          if [ $(cat pruebas_fallidas.txt | wc -c) -ne 0 ]; then
+              echo "Tests failed. See pruebas_fallidas.txt for details." >&2
+              echo < pruebas_fallidas.txt >&2
+          else
+              echo "All tests passed."
+          fi
+
       - name: Guardar artefactos
         uses: actions/upload-artifact@v3
         with:
           name: estado-final
-          path: .
+          path: pruebas_fallidas.txt
+
+  review:
+    runs-on: ubuntu-latest
+    needs: test  # El job depende de la ejecución anterior
+    steps:
+      - name: Descargar artefactos
+        uses: actions/download-artifact@v3
+        with:
+          name: estado-final
 
       - name: Exito o fallo
         run: |
-            if [ $(cat pruebas_fallidas.txt | wc -c) -neq 0 ]; then
-                exit 1
-            else
-                exit 0
+          if [ $(cat pruebas_fallidas.txt | wc -c) -ne 0 ]; then
+              exit 1
+          else
+              exit 0
