@@ -12,6 +12,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "11"
+
+      - name: Verificar la instalación de Java
+        run: java -version
+
+      - name: Verificar la instalación de Kotlin
+        run: kotlinc -version
+
+      - name: Hacer el script de tests ejecutable
+        run: chmod +x test.sh 
 
       - name: Ejecutar tests
         run: |
