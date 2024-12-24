@@ -37,7 +37,7 @@ jobs:
             # Verifica si el archivo pruebas_fallidas.txt está vacío
             if [ -s pruebas_fallidas.txt ]; then
                 echo "Tests failed. See pruebas_fallidas.txt for details." >&2
-                echo < pruebas_fallidas.txt
+                echo < pruebas_fallidas.txt >&2
                 exit 1
             else
                 echo "All tests passed."
