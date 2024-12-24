@@ -1,3 +1,5 @@
+!#/bin/bash
+
 shopt -s nullglob
 
 echo "" > pruebas_fallidas.txt	# Limpiar archivo de pruebas fallidas

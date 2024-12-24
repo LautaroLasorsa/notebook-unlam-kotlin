@@ -1,10 +1,10 @@
 class SegmentTree<T>(
-    private val n: Int, 
-    private val operation: (T, T) -> T, 
-    private val neutral: T
+    val n: Int, 
+    val operation: (T, T) -> T, 
+    val neutral: T
 ) {
-    private var size: Int
-    private var st: MutableList<T>
+    var size: Int
+    var st: MutableList<T>
 
     init {
         size = 1
