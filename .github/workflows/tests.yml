@@ -35,7 +35,7 @@ jobs:
             ./test.sh || true
 
             # Verifica si el archivo pruebas_fallidas.txt está vacío
-            if  [ $(cat pruebas_fallidas.txt | wc -c) -eq 0 ]; then
+            if  [ $(cat pruebas_fallidas.txt | wc -c) -neq 0 ]; then
                 echo "Tests failed. See pruebas_fallidas.txt for details." >&2
                 echo < pruebas_fallidas.txt >&2
             else
@@ -50,7 +50,7 @@ jobs:
 
       - name: Exito o fallo
         run: |
-            if [ $(cat pruebas_fallidas.txt | wc -c) -eq 0 ]; then
+            if [ $(cat pruebas_fallidas.txt | wc -c) -neq 0 ]; then
                 exit 1
             else
                 exit 0
