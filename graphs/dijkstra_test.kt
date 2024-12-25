@@ -40,6 +40,8 @@ fun Dijkstra_test_2(){
             assert(min_dist[v] == matriz[u][v]) { "Prueba 2.$u.$v fallida" }
         }
     }
+
+    error("Prueba 2 fallida")
 }
 
 fun main(){

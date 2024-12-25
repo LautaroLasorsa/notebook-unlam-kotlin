@@ -4,6 +4,8 @@ shopt -s nullglob
 
 # echo "" > pruebas_fallidas.txt	# Limpiar archivo de pruebas fallidas
 
+rm -f pruebas_fallidas.txt
+
 for carpeta in ./*/; do
     for test in $carpeta*_test.kt; do
         echo "Corriendo pruebas de $test"
