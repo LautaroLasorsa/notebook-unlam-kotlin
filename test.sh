@@ -2,7 +2,7 @@
 
 shopt -s nullglob
 
-echo "" > pruebas_fallidas.txt	# Limpiar archivo de pruebas fallidas
+# echo "" > pruebas_fallidas.txt	# Limpiar archivo de pruebas fallidas
 
 for carpeta in ./*/; do
     for test in $carpeta*_test.kt; do
