@@ -1,4 +1,5 @@
-// st_test.kt
+// segment_tree.kt
+
 fun test_segment_tree_1() {
     val st = SegmentTree(
         5,

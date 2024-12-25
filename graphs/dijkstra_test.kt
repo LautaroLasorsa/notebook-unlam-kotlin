@@ -1,3 +1,5 @@
+// dijkstra.kt
+
 fun Dijkstra_test_1(){
     val graph = listOf(
         listOf(Pair(1, 1), Pair(2, 2)),
@@ -35,9 +37,17 @@ fun Dijkstra_test_2(){
     }
 
     for (u in 0 until n){
-        val (min_dist, _) = Dijkstra(grafo, u)
+        val (min_dist, padre) = Dijkstra(grafo, u)
         for (v in 0 until n){
             assert(min_dist[v] == matriz[u][v]) { "Prueba 2.$u.$v fallida" }
+            if (padre[v] != -1){
+                var x = v
+                while (x != u){
+                    val p = padre[x]
+                    assert(matriz[u][v] == matriz[u][p] + matriz[p][v]) { "Prueba 2.$u.$v.$p fallida" }
+                    x = p
+                }
+            }
         }
     }
 }
