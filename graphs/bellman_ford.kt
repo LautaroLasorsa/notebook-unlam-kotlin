@@ -4,7 +4,7 @@ fun BellmanFord(
     largo: Int
 ) : List<List<Int>> {
     val n = grafo.size
-    var dist = MutableList(largo) { MutableList(n) { Int.MAX_VALUE } }
+    var dist = MutableList(largo+1) { MutableList(n) { Int.MAX_VALUE } }
     dist[0][inicio] = 0
     for (k in 0 until largo-1){
         for (u in 0 until n){
