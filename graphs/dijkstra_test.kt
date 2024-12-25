@@ -9,7 +9,6 @@ fun Dijkstra_test_1(){
     val (min_dist, padre) = Dijkstra(graph, 0)
     val expected = listOf(0, 1, 2, 2, 3)
     assert(min_dist == expected) { "Prueba 1.1 fallida" }
-    error("Otro error")
 }
 
 fun Dijkstra_test_2(){
@@ -41,8 +40,6 @@ fun Dijkstra_test_2(){
             assert(min_dist[v] == matriz[u][v]) { "Prueba 2.$u.$v fallida" }
         }
     }
-
-    error("Prueba 2 fallida")
 }
 
 fun main(){
