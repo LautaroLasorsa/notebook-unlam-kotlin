@@ -1,4 +1,4 @@
-// dijkstra.kt
+// dijkstra.kt floyd_warshall.kt
 
 fun Dijkstra_test_1(){
     val graph = listOf(
@@ -17,7 +17,7 @@ fun Dijkstra_test_2(){
     val n = 500
     val m = 10000
     val inf = Int.MAX_VALUE/2;
-    val matriz = MutableList(n) { MutableList(n) { inf } }
+    var matriz = MutableList(n) { MutableList(n) { inf } }
     val grafo = MutableList(n) { mutableListOf<Pair<Int, Int>>() }
 
     for (e_i in 0 until m){
@@ -28,13 +28,7 @@ fun Dijkstra_test_2(){
         grafo[u].add(Pair(v, w))
     }
 
-    for (k in 0 until n){
-        for (i in 0 until n){
-            for (j in 0 until n){
-                matriz[i][j] = minOf(matriz[i][j], matriz[i][k] + matriz[k][j])
-            }
-        }
-    }
+    matriz = FloydWarshall(matriz)
 
     for (u in 0 until n){
         val (min_dist, padre) = Dijkstra(grafo, u)

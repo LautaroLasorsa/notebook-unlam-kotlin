@@ -39,7 +39,7 @@ fun FloydWarshall_test_2(){
         for (i in 0 until n){
             if (dist[i][i] < 0){
                 val min_parte_1 = (1..n).map { bf_dist[it][i] }.minOrNull() ?: Int.MAX_VALUE
-                val min_parte_2 = (n+1..2*n).map { bf_dist[i][it] }.minOrNull() ?: Int.MAX_VALUE
+                val min_parte_2 = (n+1..2*n).map { bf_dist[it][i] }.minOrNull() ?: Int.MAX_VALUE
                 assert(min_parte_2 < min_parte_1) { "Prueba 2.$caso.$i fallida"}
             }
         }

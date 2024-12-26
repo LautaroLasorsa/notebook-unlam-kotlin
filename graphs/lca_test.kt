@@ -16,3 +16,7 @@ fun LCA_test_1(){
     assert(lca.lca(3, 4) == 0) { "Prueba 1.4 fallida" }
     assert(lca.lca(2, 4) == 2) { "Prueba 1.5 fallida" }
 }
+
+fun main(){
+    LCA_test_1()
+}
