@@ -20,6 +20,7 @@ fun karatsuba_test_1(){
 fun karatsuba_test_2(){
     val n_casos = 10
     val n = 200_000
+    var peor_tiempo = 0L
     for (caso in 0 until n_casos){
         val a = (0 until n).map { (0..100).random().toLong() }
         val b = (0 until n).map { (0..100).random().toLong() }
@@ -30,7 +31,9 @@ fun karatsuba_test_2(){
         assert(
             t1 - t0 < 2000
         ){ "Prueba 2.$caso fallida TLE: ${t1-t0}" }
+        peor_tiempo = maxOf(peor_tiempo, t1-t0)
     }
+    println("Peor tiempo: $peor_tiempo ms")
 }
 
 fun main(){
