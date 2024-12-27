@@ -9,16 +9,7 @@ rm -f pruebas_fallidas.txt
 for carpeta in ./*/; do
     cd $carpeta
     for test in *_test.kt; do
-        echo "Corriendo pruebas de $carpeta$test"
-        codigo=$(head -n 1 "$test" | cut -c 3-)
-        kotlinc $codigo $test -include-runtime -d test.jar
-        mensaje_error=$(java -jar test.jar 2>&1 > /dev/null)
-
-        if [ ! -z "$mensaje_error" ]; then
-            echo "$test $mensaje_error">>../pruebas_fallidas.txt
-        fi
-        
-        rm test.jar
+        bash ../run_test.sh $carpeta $test ../pruebas_fallidas.txt
     done
     cd ..
 done
