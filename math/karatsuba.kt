@@ -7,19 +7,19 @@ fun Karatsuba(a : List<Long>, b : List<Long>) : List<Long>{
 }
 
 
-fun karatsuba(a : List<Long>, b: List<Long>) : List<Long>{
-    if (a.size <= 32){
-        val c : MutableList<Long> = MutableList(2*a.size - 1) { 0 }
-        for (i in 0 until a.size){
-            for (j in 0 until b.size){
-                c[i+j] += a[i]*b[j]
+fun karatsuba(a: List<Long>, b: List<Long>): List<Long> {
+    if (a.size <= 16) { // Reducir el tamaño de la condición base
+        val c = MutableList(2 * a.size - 1) { 0L }
+        for (i in a.indices) {
+            for (j in b.indices) {
+                c[i + j] += a[i] * b[j]
             }
         }
         return c
     }
 
     val n = a.size
-    val k = n/2
+    val k = n / 2
     val a0 = a.subList(0, k)
     val a1 = a.subList(k, n)
     val b0 = b.subList(0, k)
@@ -27,17 +27,14 @@ fun karatsuba(a : List<Long>, b: List<Long>) : List<Long>{
 
     val z2 = karatsuba(a1, b1)
     val z0 = karatsuba(a0, b0)
-    val inter = karatsuba(
-        MutableList(k) { a0[it] + a1[it] },
-        MutableList(k) { b0[it] + b1[it] }
-    )
-    val z1 = MutableList(n-1) { inter[it] - z0[it] - z2[it] }
+    val a0a1 = List(k) { a0[it] + a1[it] }
+    val b0b1 = List(k) { b0[it] + b1[it] }
+    val z1 = karatsuba(a0a1, b0b1)
 
-    val c = MutableList(2*n-1) { 0.toLong() }
-    for (i in 0 until n-1){
-        c[i] += z0[i]
-        c[i+k] += z1[i]
-        c[i+2*k] += z2[i]
-    }
-    return c
+    val result = MutableList(2 * n) { 0L }
+    for (i in z0.indices) result[i] += z0[i]
+    for (i in z2.indices) result[i + n] += z2[i]
+    for (i in z1.indices) result[i + k] += z1[i] - z0.getOrElse(i) { 0L } - z2.getOrElse(i) { 0L }
+
+    return result
 }
