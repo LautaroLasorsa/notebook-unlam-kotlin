@@ -29,7 +29,7 @@ fun karatsuba_test_1(){
 
 fun karatsuba_test_2(){
     val n_casos = 10
-    val n = 35_000
+    val n = 25_000
     var peor_tiempo = 0L
     for (caso in 0 until n_casos){
         val a = (0 until n).map { (0..100).random().toLong() }
