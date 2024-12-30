@@ -4,7 +4,7 @@ fun bordes_test_1(){
     val s = "abacaba"
     val b = bordes(s)
     val expected = listOf(-1, 0, 0, 1, 0, 1, 2, 3)
-    assert(b == expected) { "Prueba 1.1 fallida" }
+    assert(b == expected) { "Prueba 1.1 fallida:\n$b\n$expected\n" }
 }
 
 fun bordes_test_2(){
@@ -29,7 +29,8 @@ fun bordes_test_2(){
         val s = (0 until n).map { ('a'..'z').random() }.joinToString("")
         val b = bordes(s)
         for (i in 1 until n+1){
-            assert(b[i] == get_borde(s.substring(0, i))) { "Prueba 2.$caso.$i fallida" }
+            val expected = get_borde(s.substring(0, i))
+            assert(b[i] == expected) { "Prueba 2.$caso.$i fallida:\n$b[i]\n$expected" }
         }
     }
 }

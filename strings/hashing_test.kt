@@ -1,6 +1,23 @@
 // hashing.kt
 
 fun hashing_test_1(){
+    val a = Hashing('a')
+    val a2 = Hashing('a')
+    assert(a.h == a2.h) { "Prueba 1.1 fallida" }
+
+    val b = Hashing('b')
+    assert(a.h != b.h) { "Prueba 1.2 fallida" }
+
+    val ab = a + b
+    val ab2 = a2 + b
+    assert(ab.h == ab2.h) { "Prueba 1.3 fallida" }
+
+    val hcasa = StringHasher("casa")
+    val hsa = StringHasher("sa")
+    assert(hcasa.hash(2,4).h == hsa.hash(0,2).h) { "Prueba 1.4 fallida ${hcasa.hash(2,4).h} ${hsa.hash(0,2).h}" }
+}
+
+fun hashing_test_2(){
     val n_casos = 1000
     val n = 50
     for (caso in 0 until n_casos){
@@ -10,13 +27,13 @@ fun hashing_test_1(){
             for(j in i until n){
                 val sub = s.substring(i,j+1)
                 val h_sub = StringHasher(sub)
-                assert(h_sub.hash(0, sub.length) == h.hash(i, j+1)) { "Prueba 1.$caso.$i.$j fallida" }
+                assert(h_sub.hash(0, sub.length) == h.hash(i, j+1)) { "Prueba 2.$caso.$i.$j fallida" }
             }
         }
     }
 }
 
-fun hashing_test_2(){
+fun hashing_test_3(){
     val n_casos = 100
     val n = 30
     for (caso in 0 until n_casos){
@@ -30,7 +47,7 @@ fun hashing_test_2(){
                         val sub2 = s.substring(i2,j2+1)
                         val string_eq = (sub1 == sub2)
                         val hash_eq = (h.hash(i1,j1+1) == h.hash(i2, j2+1))
-                        assert(string_eq == hash_eq) { "Prueba 2.$caso.$i1.$j1.$i2.$j2 fallida: $string_eq $hash_eq"}
+                        assert(string_eq == hash_eq) { "Prueba 3.$caso.$i1.$j1.$i2.$j2 fallida: $string_eq $hash_eq"}
                     }
                 }
             }
@@ -38,7 +55,7 @@ fun hashing_test_2(){
     }
 }
 
-fun hashing_test_3(){
+fun hashing_test_4(){
     val n_casos = 100
     for (caso in 0 until n_casos){
         val n = (1..(1 shl 20)).random()
@@ -54,7 +71,7 @@ fun hashing_test_3(){
             e /= 2
         }
         val h = StringHasher(s)
-        assert(h.hash(0, n) == pot) { "Prueba 3.$caso fallida" }
+        assert(h.hash(0, n) == pot) { "Prueba 4.$caso fallida" }
     }
 }
 

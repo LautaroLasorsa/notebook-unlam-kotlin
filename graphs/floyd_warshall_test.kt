@@ -2,9 +2,9 @@
 
 fun FloydWarshall_test_1(){
     val matriz = listOf(
-        listOf(0, 1, Int.MAX_VALUE),
-        listOf(Int.MAX_VALUE, 0, 1),
-        listOf(1, Int.MAX_VALUE, 0)
+        listOf(0, 1, Int.MAX_VALUE/2),
+        listOf(Int.MAX_VALUE/2, 0, 1),
+        listOf(1, Int.MAX_VALUE/2, 0)
     )
 
     val dist = FloydWarshall(matriz)
@@ -23,7 +23,7 @@ fun FloydWarshall_test_2(){
     val casos = 1000
 
     for (caso in 0 until casos){
-        val matriz = MutableList(n) { i -> MutableList(n) { j -> if (i != j) Int.MAX_VALUE else 0 } }
+        val matriz = MutableList(n) { i -> MutableList(n) { j -> if (i != j) Int.MAX_VALUE/2 else 0 } }
         val grafo = MutableList(n) { mutableListOf<Pair<Int, Int>>() }
 
         for (i in 0 until n){

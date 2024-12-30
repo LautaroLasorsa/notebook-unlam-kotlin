@@ -13,7 +13,7 @@ fun BellmanFord_test_1(){
         listOf(6, Int.MAX_VALUE, Int.MAX_VALUE)
     )
 
-    assert(dist == expected) { "Prueba 1.1 fallida" }
+    assert(dist == expected) { "Prueba 1.1 fallida\n $dist \n $expected \n" }
 }
 
 fun BellmanFord_test_2(){
@@ -31,6 +31,7 @@ fun BellmanFord_test_2(){
         listOf(Int.MAX_VALUE,-3, Int.MAX_VALUE),
         listOf(-4, Int.MAX_VALUE, Int.MAX_VALUE)
     )
+    assert(dist == expected) { "Prueba 2.1 fallida\n $dist \n $expected \n" }
 }
 
 fun main(){

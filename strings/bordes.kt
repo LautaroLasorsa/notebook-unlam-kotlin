@@ -6,6 +6,7 @@ fun bordes(s: String): List<Int>{
         while (j >= 0 && s[i] != s[j]){
             j = b[j]
         }
+        j++
         b[i+1] = j
     }
     return b

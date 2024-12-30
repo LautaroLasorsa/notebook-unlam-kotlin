@@ -33,6 +33,12 @@ class Hashing(c: Char) {
         }
         return ans
     }
+
+    /// O simplemente comparar h1.h == h2.h en vez de h1==h2 
+    override fun equals(h2: Any?): Boolean {
+        if (h2 !is Hashing) return false
+        return h == h2.h
+    }
 }
 
 fun hash_neutro() : Hashing{

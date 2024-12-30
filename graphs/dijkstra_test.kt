@@ -18,6 +18,7 @@ fun Dijkstra_test_2(){
     val m = 10000
     val inf = Int.MAX_VALUE/2;
     var matriz = MutableList(n) { MutableList(n) { inf } }
+    for (i in 0 until n) matriz[i][i] = 0
     val grafo = MutableList(n) { mutableListOf<Pair<Int, Int>>() }
 
     for (e_i in 0 until m){

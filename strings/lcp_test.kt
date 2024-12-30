@@ -4,8 +4,18 @@ fun lcp_test_1(){
     val s = "abacaba"
     val sa = suffix_array(s)
     val lcp = computar_lcp(s, sa)
-    val expected = listOf(0, 1, 3, 0, 2, 0, 1)
-    assert(lcp == expected) { "Prueba 1.1 fallida" }
+    """
+    $
+    a
+    aba
+    abacaba
+    acaba
+    ba
+    bacaba
+    caba
+    """
+    val expected = listOf(0, 0, 1, 3, 1, 0, 2, 0)
+    assert(lcp == expected) { "Prueba 1.1 fallida:\n$lcp\n$expected" }
 }
 
 fun lcp_test_2(){

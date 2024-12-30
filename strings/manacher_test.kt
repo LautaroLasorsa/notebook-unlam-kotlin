@@ -6,8 +6,8 @@ fun Manacher_test_1(){
     val expected_d1 = listOf(1,1,1,1,1,1,7,1,1,1,1,1,1)
     val expected_d2 = listOf(0,1,0,3,0,1,0,0,1,0,3,0,1)
 
-    assert(d1 == expected_d1) { "Prueba 1.1 fallida" }
-    assert(d2 == expected_d2) { "Prueba 1.2 fallida" }
+    assert(d1 == expected_d1) { "Prueba 1.1 fallida\n$d1\n$expected_d1" }
+    assert(d2 == expected_d2) { "Prueba 1.2 fallida\n$d2\n$expected_d2" }
 }
 
 fun Manacher_test_2(){
@@ -21,14 +21,14 @@ fun Manacher_test_2(){
             while (i-lar >= 0 && i+lar < n && s[i-lar] == s[i+lar]){
                 lar++
             }
-            assert(d1[i] == lar) { "Prueba 2.$caso.$i fallida" }
+            assert(d1[i] == lar) { "Prueba 2.$caso.$i fallida: ${d1[i]} $lar" }
         }
         for (i in 0 until n-1){
             var lar = 0
-            while (i-lar >= 0 && i+lar+1 < n && s[i-lar] == s[i+lar+1]){
+            while (i-lar-1 >= 0 && i+lar < n && s[i-lar-1] == s[i+lar]){
                 lar++
             }
-            assert(d2[i] == lar) { "Prueba 2.$caso.${i+n} fallida" }
+            assert(d2[i] == lar) { "Prueba 2.$caso.${i+n} fallida: ${d2[i]} $lar" }
         }
     }
 }
