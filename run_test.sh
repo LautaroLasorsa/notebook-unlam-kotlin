@@ -17,9 +17,12 @@ else
 fi
 
 echo "Corriendo pruebas de $carpeta$test"
+echo "Corriendo pruebas de $carpeta$test" > $output
+
 codigo=$(head -n 1 "$test" | cut -c 3-)
 kotlinc $codigo $test -include-runtime -d test.jar
-mensaje_error=$(java -jar -ea -Dfile.encoding=UTF-8 -XX:+UseSerialGC -Xss64m -Xms1920m -Xmx1920m test.jar 2>&1 > $output)
+
+mensaje_error=$(java -jar -ea -Dfile.encoding=UTF-8 -XX:+UseSerialGC -Xss64m -Xms1920m -Xmx1920m test.jar 2>&1 >> $output)
 
 if [ ! -z "$mensaje_error" ]; then
     echo -e "\e[1;31mFallo en $carpeta$test\e[0m"
