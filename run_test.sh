@@ -3,7 +3,7 @@ if [ "$#" -eq 1 ]; then
     test=$1
     output="output.txt"
     output_error="pruebas_fallidas.txt"
-elif [ "$#" -eq 3 ]; then
+elif [ "$#" -eq 4 ]; then
     carpeta=$1
     test=$2
     output=$3
@@ -17,7 +17,7 @@ else
 fi
 
 echo "Corriendo pruebas de $carpeta$test"
-echo "Corriendo pruebas de $carpeta$test" > $output
+echo "Corriendo pruebas de $carpeta$test" >> $output
 
 codigo=$(head -n 1 "$test" | cut -c 3-)
 kotlinc $codigo $test -include-runtime -d test.jar
