@@ -1,6 +1,6 @@
 // segment_tree.kt
 
-fun test_segment_tree_1() {
+fun segment_tree_test_1() {
     val st = SegmentTree(
         5,
         ::minOf,
@@ -26,7 +26,7 @@ fun test_segment_tree_1() {
     assert(result3 == 0) { "Prueba 3 fallida" }
 }
 
-fun test_segment_tree_2(){
+fun segment_tree_test_2(){
     val largo:Int = 1 shl 20
 
     val st = SegmentTree<Int>(
@@ -47,7 +47,36 @@ fun test_segment_tree_2(){
     }
 }
 
+
+fun segment_tree_test_3(){
+    val n_casos = 10
+    val n = 1 shl 20
+    val q = 1 shl 20
+    val time_limit = 2000L
+
+    for (caso in 0 until n_casos){
+        val start = System.currentTimeMillis()
+        var st = SegmentTree(n, Int::plus, 0)
+        for (i in 0 until q){
+            if ((0..2).random() == 0){
+                val l = (0 until n).random()
+                val r = (l until n).random()
+                val result = st.query(l, r)
+            }else{
+                val index = (0 until n).random()
+                val value = (0 until 100).random()
+                st.update(index + 1, value)
+            }
+        }
+        val end = System.currentTimeMillis()
+        assert(end - start <= time_limit) { "Prueba 3.$caso fallida ${end-start} ms" }
+        println("Prueba 3.$caso exitosa ${end-start} ms")
+    }
+    
+}
+
 fun main() {
-    test_segment_tree_1()
-    test_segment_tree_2()
+    segment_tree_test_1()
+    segment_tree_test_2()
+    segment_tree_test_3()
 }
