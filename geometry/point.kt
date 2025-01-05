@@ -1,6 +1,6 @@
 import kotlin.math.*
 
-class pt(x: Double, y: Double){
+class pt(x: Double, y: Double): Comparable<pt>{
     val x = x
     val y = y
     operator fun plus(p: pt) = pt(x + p.x, y + p.y)
@@ -12,17 +12,17 @@ class pt(x: Double, y: Double){
     fun angle(p: pt) = acos((this * p) / (this.norm() * p.norm()))
     fun norm2() = x * x + y * y
     fun norm() = sqrt(norm2())
-    fun unit() = this / norm()
+    fun unit() = if (norm() > 0) this / norm() else pt(0.0, 0.0)
     fun rot(r: pt) = pt(this % r, this * r)
     fun rot(a: Double) = this.rot(pt(cos(a), sin(a)))
     fun left(p: pt, q: pt) = (q - p).unit() % (this - p).unit() > EPS
 
-    operator fun  compareTo(p: pt) = when {
-        this.x != p.x -> this.x.compareTo(p.x)
+    operator override fun compareTo(p: pt): Int = when {
+        abs(this.x - p.x) > EPS -> this.x.compareTo(p.x)
         else -> this.y.compareTo(p.y)
     }
 
-    override fun equals(other: Any?) = other is pt && x == other.x && y == other.y
+    override fun equals(other: Any?) = other is pt && abs(x - other.x)<EPS && abs(y - other.y)<EPS
     override fun toString() = "($x, $y)"
 }
 
