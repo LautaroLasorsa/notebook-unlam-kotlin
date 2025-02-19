@@ -1,4 +1,11 @@
+// convex_hull.kt point.kt
+// CODEFORCES 166 B
+// https://codeforces.com/problemset/problem/166/B
+
+import java.util.Scanner
 import kotlin.math.*
+
+const val EPS = 1e-9
 
 class pt(x: Double, y: Double): Comparable<pt>{
     val x = x
@@ -28,3 +35,33 @@ class pt(x: Double, y: Double): Comparable<pt>{
 
 val ccw90 = pt(1.0,0.0)
 val cw90 = pt(-1.0,0.0)
+
+fun chull(ps: List<pt>) : List<pt>{
+    if(ps.size < 3) return ps
+    val p = ps.sorted()
+    val ch = mutableListOf<pt>()
+    for(pi in p){
+        while(ch.size > 1 && ch[ch.size - 1].left(ch[ch.size - 2], pi)) ch.removeAt(ch.size - 1)
+        ch.add(pi)
+    }
+    ch.removeAt(ch.size - 1)
+    val t = ch.size
+    for(pi in p.reversed()){
+        while(ch.size > t+1 && ch[ch.size - 1].left(ch[ch.size - 2], pi)) ch.removeAt(ch.size - 1)
+        ch.add(pi)
+    }
+    ch.removeAt(ch.size - 1)
+    return ch
+}
+
+fun main(){
+    val scanner = Scanner(System.`in`)
+
+    val n = scanner.nextInt()
+    val A = Array(n){ pt(scanner.nextDouble(), scanner.nextDouble()) }
+    val m = scanner.nextInt()
+    val B = Array(m){ pt(scanner.nextDouble(), scanner.nextDouble()) }
+    val convex_hull = chull(A + B)
+    if (convex_hull == A) println("YES")
+    else println("NO")
+}
