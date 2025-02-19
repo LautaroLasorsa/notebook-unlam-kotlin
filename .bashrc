@@ -1,0 +1,2 @@
+export NOTEBOOK_KOTLIN_ROOT="$(pwd)"
+export PATH=$PATH:"$NOTEBOOK_KOTLIN_ROOT"/bin
