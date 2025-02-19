@@ -34,10 +34,10 @@ jobs:
         run: |
           ./test.sh || true
 
-          # Verifica si el archivo pruebas_fallidas.txt está vacío
-          if [ -f pruebas_fallidas.txt ]; then
-              echo "Tests failed. See pruebas_fallidas.txt for details." >&2
-              cat pruebas_fallidas.txt >&2
+          # Verifica si el archivo pruebas_fallidas.log está vacío
+          if [ -f pruebas_fallidas.log ]; then
+              echo "Tests failed. See pruebas_fallidas.log for details." >&2
+              cat pruebas_fallidas.log >&2
           else
               echo -e "\e[32m\e[1mAll tests passed.\e[0m"
           fi
@@ -47,7 +47,7 @@ jobs:
 
       - name: Exito o fallo
         run: |
-          if [ -f pruebas_fallidas.txt ]; then
+          if [ -f pruebas_fallidas.log ]; then
               exit 1
           else
               exit 0

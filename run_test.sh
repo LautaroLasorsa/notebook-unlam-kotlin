@@ -1,8 +1,8 @@
 if [ "$#" -eq 1 ]; then
     carpeta=$(pwd)"/"
     test=$1
-    output="output.txt"
-    output_error="pruebas_fallidas.txt"
+    output="output.log"
+    output_error="pruebas_fallidas.log"
 elif [ "$#" -eq 4 ]; then
     carpeta=$1
     test=$2

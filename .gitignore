@@ -1,2 +1,13 @@
-*.jar
-pruebas_fallidas.txt
+*
+!*/
+
+!.gitignore
+!*.cpp
+!*.kt
+!*.py
+!*.sh
+!*.txt
+!*.tex
+!notebook/images/
+
+output.txt
