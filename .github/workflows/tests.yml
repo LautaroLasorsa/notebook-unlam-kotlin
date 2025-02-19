@@ -27,14 +27,13 @@ jobs:
       - name: Verificar la instalación de Kotlin
         run: kotlinc -version
 
-      - name: Hacer el script de tests ejecutable
-        run: chmod +x test.sh 
+      - name: Hacer los scripts de tests ejecutables
+        run: chmod +x bin/*.sh 
 
       - name: Ejecutar tests
         run: |
           source .bashrc
-          chmod +x bin/*.sh
-          test.sh || true
+          test.sh
 
           # Verifica si el archivo pruebas_fallidas.log está vacío
           if [ -f pruebas_fallidas.log ]; then
