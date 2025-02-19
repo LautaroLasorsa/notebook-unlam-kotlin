@@ -56,4 +56,5 @@ jobs:
 
       - name: Verificar que los problemas probados manualmente den AC
         run: |
+          source .bashrc
           detect_outdated_acs.sh
