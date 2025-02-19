@@ -32,7 +32,8 @@ jobs:
 
       - name: Ejecutar tests
         run: |
-          ./test.sh || true
+          source .bashrc
+          test.sh || true
 
           # Verifica si el archivo pruebas_fallidas.log está vacío
           if [ -f pruebas_fallidas.log ]; then
@@ -52,3 +53,7 @@ jobs:
           else
               exit 0
           fi
+
+      - name: Verificar que los problemas probados manualmente den AC
+        run: |
+          detect_outdated_acs.sh
