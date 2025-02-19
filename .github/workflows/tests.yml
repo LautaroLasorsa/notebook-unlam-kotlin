@@ -33,6 +33,7 @@ jobs:
       - name: Ejecutar tests
         run: |
           source .bashrc
+          chmod +x bin/*.sh
           test.sh || true
 
           # Verifica si el archivo pruebas_fallidas.log está vacío
