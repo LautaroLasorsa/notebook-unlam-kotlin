@@ -9,5 +9,8 @@
 !*.txt
 !*.tex
 !notebook/images/
+!*.in
+!.bashrc
+!*_completed.sha256
 
 output.txt

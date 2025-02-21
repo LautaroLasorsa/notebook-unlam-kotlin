@@ -1,8 +1,8 @@
-clear.jar: clear.kt
-	kotlinc clear.kt -include-runtime -d clear.jar
+bin/clear.jar: bin/clear.kt
+	kotlinc bin/clear.kt -include-runtime -d clear.jar
 	
-clear: clear.jar
-	java -jar clear.jar
+clear: bin/clear.jar
+	java -jar bin/clear.jar
 
 commit:
 	make clear

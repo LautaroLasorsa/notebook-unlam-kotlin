@@ -1,4 +1,4 @@
-// convex_hull.kt point.kt
+// ../convex_hull.kt ../point.kt
 // CODEFORCES 166 B
 // https://codeforces.com/problemset/problem/166/B
 
