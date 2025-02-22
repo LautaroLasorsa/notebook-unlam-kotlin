@@ -12,5 +12,3 @@
 !*.in
 !.bashrc
 !*_completed.sha256
-
-output.txt

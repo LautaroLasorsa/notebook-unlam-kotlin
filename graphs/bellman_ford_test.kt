@@ -4,7 +4,7 @@ fun BellmanFord_test_1(){
     val grafo = listOf(
         listOf(Pair(1,1),Pair(2,2)),
         listOf(Pair(0,5)),
-        listOf(),
+        listOf<Pair<Int,Int>>()
     )
     val dist = BellmanFord(grafo, 0, 2)
     val expected = listOf(
@@ -20,7 +20,7 @@ fun BellmanFord_test_2(){
     val grafo = listOf(
         listOf(Pair(1,-1)),
         listOf(Pair(0,-1)),
-        listOf(),
+        listOf<Pair<Int,Int>>()
     )
 
     val dist = BellmanFord(grafo, 0, 4)

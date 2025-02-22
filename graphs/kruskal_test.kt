@@ -28,7 +28,8 @@ fun Kruskal_test_2(){
             Triple((0 until n).random(), (0 until n).random(), (0 until 1000).random())
         }
         val start = System.currentTimeMillis()
-        val (valor, aristas) = Kruskal(g, n)
+        @Suppress("UNUSED_VARIABLE")
+        val _result = Kruskal(g, n)
         val end = System.currentTimeMillis()
         assert(end - start <= time_limit) { "Prueba 2.$caso fallida ${end-start} ms" }
         println("Prueba 2.$caso exitosa ${end-start} ms")

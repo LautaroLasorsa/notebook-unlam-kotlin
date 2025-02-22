@@ -1,7 +1,7 @@
 import kotlin.math.*
 
 class pt(x: Double, y: Double): Comparable<pt>{
-    val x = xs
+    val x = x
     val y = y
     operator fun plus(p: pt) = pt(x + p.x, y + p.y)
     operator fun minus(p: pt) = pt(x - p.x, y - p.y)

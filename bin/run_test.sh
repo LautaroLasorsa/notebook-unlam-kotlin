@@ -1,5 +1,9 @@
+#!/bin/bash
+# Corre un test y guarda los resultados en un archivo. Formato de uso: ./run_test.sh <carpeta> <test> <output> <output_error>
+# Run a test and save the results in a file. Usage: ./run_test.sh <folder> <test> <output> <output_error>
+
 if [ "$#" -eq 1 ]; then
-    carpeta=$(pwd)"/"
+    carpeta="$(pwd)/"
     test=$1
     output="output.log"
     output_error="pruebas_fallidas.log"
@@ -22,7 +26,12 @@ echo "Corriendo pruebas de $carpeta$test" >> $output
 codigo=$(head -n 1 "$test" | cut -c 3-)
 kotlinc $codigo $test -include-runtime -d test.jar
 
-mensaje_error=$(java -jar -ea -Dfile.encoding=UTF-8 -XX:+UseSerialGC -Xss64m -Xms1920m -Xmx1920m test.jar 2>&1 >> $output)
+if [ -f test.jar ]; then
+    mensaje_error=$(java -jar -ea -Dfile.encoding=UTF-8 -XX:+UseSerialGC -Xss64m -Xms1920m -Xmx1920m test.jar 2>&1 >> $output)
+else 
+    mensaje_error="No se pudo compilar | Compiling failed"
+    echo "$mensaje_error"
+fi
 
 if [ ! -z "$mensaje_error" ]; then
     echo -e "\e[1;31mFallo en $carpeta$test\e[0m"

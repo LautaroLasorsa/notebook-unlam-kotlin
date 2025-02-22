@@ -27,7 +27,8 @@ fun Criba_test_2(){
 
 fun Criba_test_3(){
     val start = System.currentTimeMillis()
-    val criba = Criba(10_000_000)
+    @Suppress("UNUSED_VARIABLE")
+    val _criba = Criba(10_000_000)
     val end = System.currentTimeMillis()
     assert(end - start < 2000) { "Prueba 3 fallida TLE: ${end-start} ms" }
     println("Prueba 3 exitosa ${end-start} ms")

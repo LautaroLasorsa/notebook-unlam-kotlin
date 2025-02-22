@@ -1,4 +1,6 @@
 #!/bin/bash
+# Dado el contenido de un archivo, busca archivos .kt y los pasa a get_recursive_content.sh. Explora las dependencias de forma recursiva.
+# Given the content of a file, it looks for .kt files and passes them to get_recursive_content.sh. Explores dependencies recursively.
 
 while IFS= read -r line || [[ -n "$line" ]]; do
     # Eliminar caracteres no visibles (como tabuladores, saltos de línea)
