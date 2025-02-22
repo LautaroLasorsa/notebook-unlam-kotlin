@@ -25,7 +25,7 @@ fun csort(sa: MutableList<Int>, r: MutableList<Int>, k : Int){
 fun suffix_array(s0: String): List<Int>{
     val s = s0 + '\u0000'
     val n = s.length
-    var rank = 0
+    var rank: Int
     var sa = MutableList(n){it}
     var r = MutableList(n){it -> s[it].code}
     var t = MutableList(n){0}

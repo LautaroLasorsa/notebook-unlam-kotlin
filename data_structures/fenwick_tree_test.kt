@@ -50,7 +50,8 @@ fun fenwick_tree_test_3(){
             if ((0..2).random() == 0){
                 val l = (0 until n).random()
                 val r = (l until n).random()
-                val result = ft.query(r + 1) - ft.query(l)
+                @Suppress("UNUSED_VARIABLE")
+                val _result = ft.query(r + 1) - ft.query(l)
             }else{
                 val index = (0 until n).random()
                 val value = (0 until 100).random()

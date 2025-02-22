@@ -20,8 +20,8 @@ fun Duval_test_2(){
         }
 
         for (sk in ans){
-            for (i in 0 until sk.length){
-                assert(sk <= sk.substring(i) + sk.substring(0, i)) { "Prueba 2.$caso.$i fallida" }
+            for (ii in 0 until sk.length){
+                assert(sk <= sk.substring(ii) + sk.substring(0, ii)) { "Prueba 2.$caso.$i fallida" }
             }
         }
     }

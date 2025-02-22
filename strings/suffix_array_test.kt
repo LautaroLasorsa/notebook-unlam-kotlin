@@ -29,7 +29,8 @@ fun suffix_array_test_3(){
     for (caso in 0 until n_casos){
         val s = (0 until n).map { ('a'..'z').random() }.joinToString("")
         val start = System.currentTimeMillis()
-        val sa = suffix_array(s)
+        @Suppress("UNUSED_VARIABLE")
+        val _sa = suffix_array(s)
         val end = System.currentTimeMillis()
         assert(end-start < time_limit) { "Prueba 3.$caso fallida TLE ${end-start} ms" }
         println("Prueba 3.$caso exitosa ${end-start} ms")

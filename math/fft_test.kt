@@ -53,7 +53,8 @@ fun fft_test_3(){
         
         val t0 = System.currentTimeMillis()
         val mult = FFT(18)
-        val c = mult.multiply(a, b)
+        @Suppress("UNUSED_VARIABLE")
+        val _c = mult.multiply(a, b)
         val t1 = System.currentTimeMillis()
         val tiempo_ejecucion = t1 - t0
         println("Tiempo de ejecución para el caso $caso: $tiempo_ejecucion ms")

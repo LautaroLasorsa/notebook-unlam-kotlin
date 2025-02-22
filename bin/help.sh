@@ -11,3 +11,5 @@ for file in *.sh; do
     echo -e "----------------------------------------"
     
 done
+
+echo -e "\033[1mNOTEBOOK_KOTLIN_ROOT: $NOTEBOOK_KOTLIN_ROOT\033[0m"

@@ -8,7 +8,7 @@ fun Dijkstra_test_1(){
         listOf(Pair(1, 1), Pair(4, 1)),
         listOf(Pair(2, 1), Pair(3, 1))
     )
-    val (min_dist, padre) = Dijkstra(graph, 0)
+    val (min_dist, _) = Dijkstra(graph, 0)
     val expected = listOf(0, 1, 2, 2, 3)
     assert(min_dist == expected) { "Prueba 1.1 fallida" }
 }

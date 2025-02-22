@@ -36,7 +36,8 @@ fun karatsuba_test_2(){
         val b = (0 until n).map { (0..100).random().toLong() }
         
         val t0 = System.currentTimeMillis()
-        val c = Karatsuba(a, b)
+        @Suppress("UNUSED_VARIABLE")
+        val _c = Karatsuba(a, b)
         val t1 = System.currentTimeMillis()
         val tiempo_ejecucion = t1 - t0
         println("Tiempo de ejecución para el caso $caso: $tiempo_ejecucion ms")

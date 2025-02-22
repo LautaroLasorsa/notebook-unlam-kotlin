@@ -1,5 +1,5 @@
 fun FloydWarshall(
-    matriz: List<List<Int>>,
+    matriz: List<List<Int>>
 ) : MutableList<MutableList<Int>> {
     val n = matriz.size
     var dist = matriz.map{ it.toMutableList() }.toMutableList()

@@ -61,7 +61,8 @@ fun segment_tree_test_3(){
             if ((0..2).random() == 0){
                 val l = (0 until n).random()
                 val r = (l until n).random()
-                val result = st.query(l, r)
+                @Suppress("UNUSED_VARIABLE")
+                val _result = st.query(l, r)
             }else{
                 val index = (0 until n).random()
                 val value = (0 until 100).random()
