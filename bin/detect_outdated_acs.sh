@@ -12,15 +12,18 @@ for problem_folder in "$NOTEBOOK_KOTLIN_ROOT"/*/*_test_problems; do
             echo -e "\e[1;31mAC for problem $problem_folder/$problem = $name\\_completed.sha256 is missing\e[0m"
             missing=$((missing + 1))
         else
-            cat $problem | sha256sum > __temp__.sha256
-            if diff __temp__.sha256 $name"_completed.sha256" > /dev/null; then
+            curr_hash=$(get_recursive_content.sh < $problem | sha256sum)
+            ac_hash=$(cat $name"_completed.sha256")
+            echo "curr_hash: $curr_hash"
+            echo "ac_hash: $ac_hash"
+        #    get_recursive_content.sh < $problem 
+            if [[ "$curr_hash" == "$ac_hash" ]]; then
                 echo -e "\e[1;32mAC for problem $problem_folder/$problem is up to date\e[0m"
                 updated=$((updated + 1))
             else
                 echo -e "\e[1;31mAC for problem $problem_folder/$problem is outdated\e[0m"
                 outdated=$((outdated + 1))
             fi
-            rm __temp__.sha256
         fi
     done
 done;
