@@ -1,3 +1,7 @@
+#!/bin/bash
+# Corre un test y guarda los resultados en un archivo. Formato de uso: ./run_test.sh <carpeta> <test> <output> <output_error>
+# Run a test and save the results in a file. Usage: ./run_test.sh <folder> <test> <output> <output_error>
+
 if [ "$#" -eq 1 ]; then
     carpeta=$(pwd)"/"
     test=$1

@@ -1,4 +1,6 @@
 #!/bin/bash
+# Busca los problemas de prueba donde la solución aceptada no coincida con la versión actual de la solución o de las dependencias.
+# Looks for test problems where the accepted solution does not match the current version of the solution or dependencies.
 
 updated=0
 outdated=0

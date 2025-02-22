@@ -1,4 +1,6 @@
 #!/bin/bash
+# Corre todos los tests automatizados y guarda las pruebas fallidas en pruebas_fallidas.txt
+# Run all automated tests and save the failed tests in pruebas_fallidas.txt
 
 shopt -s nullglob
 
