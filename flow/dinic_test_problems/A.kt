@@ -1,3 +1,8 @@
+// ../dinic.kt
+// SPOJ FASTFLOW
+// https://www.spoj.com/problems/FASTFLOW/
+
+
 import kotlin.math.min
 
 class Dinic(nodes: Int) {
@@ -72,4 +77,18 @@ class Dinic(nodes: Int) {
         }
         return result
     }
+}
+
+fun main(){
+    var scanner = java.util.Scanner(System.`in`)
+    var n = scanner.nextInt()
+    var m = scanner.nextInt()
+    var dinic = Dinic(n)
+    for (i in 0 until m){
+        var a = scanner.nextInt()
+        var b = scanner.nextInt()
+        var c = scanner.nextLong()
+        dinic.addEdge(a-1, b-1, c, c)
+    }
+    println(dinic.maxFlow(0, n-1))
 }

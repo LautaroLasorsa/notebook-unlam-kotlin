@@ -9,6 +9,7 @@ fun Dinic_test_1(){
     assert(max_flow == 4L) { "Prueba 1.1 fallida $max_flow" }
 }
 
+
 fun main(){
     Dinic_test_1()
 }
