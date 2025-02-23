@@ -6,7 +6,7 @@
 !*.kt
 !*.py
 !*.sh
-!*.txt
+
 !*.tex
 !notebook/images/*
 !notebook/notebook.pdf
