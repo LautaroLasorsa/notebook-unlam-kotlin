@@ -1,0 +1,208 @@
+% !TEX program = lualatex
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage[usegeometry]{typearea}
+\usepackage{lastpage}
+\usepackage[top=1.6cm,bottom=0.7cm,left=0.7cm,right=1cm,a4paper]{geometry}
+\usepackage{multicol}
+\setlength{\columnseprule}{0pt}
+\setlength{\columnsep}{0.2cm}
+\usepackage{rotating}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikzpagenodes}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{import}
+
+\newcommand\importmodule[1]{\import{../#1/}{#1.tex}} 
+
+\titleformat{\section}
+  {\Huge\tt}{}{0pt}{\hspace{1cm}}
+\titlespacing*{\section}{0em}{0pt}{0pt}
+
+\titleformat{\subsection}
+  {\large\tt\bfseries}{}{0pt}{\hspace{0.3cm}}
+\titlespacing*{\subsection}{0em}{0pt}{0em}
+
+\usepackage{fontspec}
+\setmonofont[BoldFont={Iosevka Semibold}]{Iosevka Light}
+\setmainfont[BoldFont={Iosevka Semibold}]{Iosevka Light}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\thispagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{} % clear all header and footer fields 
+
+\newcommand*{\img}[1]{%
+    \begin{rotate}{-15}
+    \hspace{-1.5em}
+    \raisebox{-.6\baselineskip}{%
+        \includegraphics[
+        height=3.5em,
+        keepaspectratio,
+        ]{#1}%
+    }%
+    \end{rotate}
+}
+
+\setlength{\headwidth}{\textwidth}
+\addtolength{\headwidth}{0.25cm}
+\setlength{\headsep}{0.3cm}
+\setlength{\parindent}{0in}
+
+\newcommand{\team}{\quad University: \textbf{Universidad Nacional de La Matanza | DIIT - UNLaM} 
+    %\includegraphics[height=2\baselineskip, keepaspectratio]{images/portada_curso.jpg} 
+    \quad Team: \textbf{(-- ejemplo --)}
+}
+
+\fancyhead[L]{\team}
+\fancyhead[R]{Page \thepage\ of \pageref{LastPage}\hspace{1cm}\begin{rotate}{270}\hspace{0.5cm}\quad\team \end{rotate}}
+\fancyfoot[RO]{\begin{rotate}{270}\hspace{-4cm}Page \thepage\ of \pageref{LastPage}\end{rotate}}
+\renewcommand{\footruleskip}{0.2in}
+
+\lstdefinelanguage{Kotlin}{
+    morekeywords={fun, val, var, object, class, interface, package, import, as, is, in, when, try, catch, finally, throw, return, continue, break, while, do, for, if, else, null, true, false, override, open, final, abstract, companion, data, inline, noinline, crossinline, suspend, expect, actual},
+    sensitive=true,
+    morecomment=[l]{//},    % Comentarios de línea
+    morecomment=[s]{/*}{*/}, % Comentarios multilínea
+    morestring=[b]{"}       % Cadenas entre comillas dobles
+}
+
+\lstset{
+    language=Kotlin,
+    basicstyle={\linespread{0.5}\footnotesize\ttfamily},
+    commentstyle={\color{gray}},
+    keywordstyle={\bfseries\color{black}},
+    stringstyle={\color{gray}},
+    numberstyle={\color{gray}},
+    tabsize=3,
+    rulecolor=\color{lightgray},
+    basewidth={0.475em},
+    breaklines=true,
+    morecomment=[is]{//\ HIDE}{//\ SHOW}
+}
+
+\newcommand\kotlinfile[1]{\lstinputlisting{#1}}
+
+
+\begin{document}
+\begin{multicols*}{2}
+
+\tableofcontents
+
+
+\importmodule{data_structures}
+
+\importmodule{graphs}
+
+\importmodule{strings}
+
+\importmodule{math}
+
+\importmodule{geometry}
+
+\section{Tablas y Cotas}
+\paragraph{Primos cercanos a $10^n$}\ \\
+9941 9949 9967 9973 10007 10009 10037 10039 10061 10067 10069 10079\\
+99961 99971 99989 99991 100003 100019 100043 100049 100057 100069\\
+999959 999961 999979 999983 1000003 1000033 1000037 1000039\\
+9999943 9999971 9999973 9999991 10000019 10000079 10000103 10000121\\
+99999941 99999959 99999971 99999989 100000007 100000037 100000039 100000049\\
+999999893 999999929 999999937 1000000007 1000000009 1000000021 1000000033
+
+\paragraph{Cantidad de primos menores que $10^n$}\ \\
+$\pi(10^1)$~=~4 ;
+$\pi(10^2)$~=~25 ;
+$\pi(10^3)$~=~168 ;
+$\pi(10^4)$~=~1229 ;
+$\pi(10^5)$~=~9592 ;
+$\pi(10^6)$~=~78.498 ;
+$\pi(10^7)$~=~664.579 ;
+$\pi(10^8)$~=~5.761.455 ;
+$\pi(10^9)$~=~50.847.534 ;\\
+$\pi(10^{10})$~=~455.052,511 ;
+$\pi(10^{11})$~=~4.118.054.813 ;
+$\pi(10^{12})$~=~37.607.912.018
+%
+% Fuente: http://primes.utm.edu/howmany.shtml#table
+%
+%
+\subsection{Divisores}
+Cantidad de divisores ($\sigma_0$) para \emph{algunos} $n / \neg\exists n'<n, \sigma_0(n') \geqslant \sigma_0(n)$
+
+$\sigma_0(60)$ = 12 ; $\sigma_0(120)$ = 16 ; $\sigma_0(180)$ = 18 ; $\sigma_0(240)$ = 20 ; $\sigma_0(360)$ = 24 ;
+$\sigma_0(720)$ = 30 ; $\sigma_0(840)$ = 32 ; $\sigma_0(1260)$ = 36 ; $\sigma_0(1680)$ = 40 ; $\sigma_0(10080)$ = 72 ; $\sigma_0(15120)$ = 80 ; $\sigma_0(50400)$ = 108 ; $\sigma_0(83160)$ = 128 ; $\sigma_0(110880)$ = 144 ;
+$\sigma_0(498960)$ = 200 ; $\sigma_0(554400)$ = 216 ; $\sigma_0(1081080)$ = 256 ; $\sigma_0(1441440)$ = 288  $\sigma_0(4324320)$ = 384 ; $\sigma_0(8648640)$ = 448
+
+%
+Suma de divisores ($\sigma_1$) para \emph{algunos} $n / \neg\exists n'<n, \sigma_1(n') \geqslant \sigma_1(n)$ ;
+$\sigma_1(96)$ = 252 ; $\sigma_1(108)$ = 280 ; $\sigma_1(120)$ = 360 ; $\sigma_1(144)$ = 403 ; $\sigma_1(168)$ = 480 ;
+$\sigma_1(960)$ = 3048 ; $\sigma_1(1008)$ = 3224 ; $\sigma_1(1080)$ = 3600 ; $\sigma_1(1200)$ = 3844 ;
+$\sigma_1(4620)$ = 16128 ; $\sigma_1(4680)$ = 16380 ; $\sigma_1(5040)$ = 19344 ; $\sigma_1(5760)$ = 19890 ;
+$\sigma_1(8820)$ = 31122 ; $\sigma_1(9240)$ = 34560 ; $\sigma_1(10080)$ = 39312 ; $\sigma_1(10920)$ = 40320 ;
+$\sigma_1(32760)$ = 131040 ; $\sigma_1(35280)$ = 137826 ; $\sigma_1(36960)$ = 145152 ; $\sigma_1(37800)$ = 148800 ;
+$\sigma_1(60480)$ = 243840 ; $\sigma_1(64680)$ = 246240 ; $\sigma_1(65520)$ = 270816 ; $\sigma_1(70560)$ = 280098 ;
+$\sigma_1(95760)$ = 386880 ; $\sigma_1(98280)$ = 403200 ; $\sigma_1(100800)$ = 409448  ;
+$\sigma_1(491400)$ = 2083200 ; \\$\sigma_1(498960)$ = 2160576 ; $\sigma_1(514080)$ = 2177280 ;
+$\sigma_1(982800)$ = 4305280 ; $\sigma_1(997920)$ = 4390848 ; $\sigma_1(1048320)$ = 4464096 ;
+$\sigma_1(4979520)$ = 22189440 ; $\sigma_1(4989600)$ = 22686048 ; $\sigma_1(5045040)$ = 23154768 ;
+$\sigma_1(9896040)$ = 44323200 ; $\sigma_1(9959040)$ = 44553600 ; $\sigma_1(9979200)$ = 45732192
+%
+%
+\subsection{Factoriales}
+\begin{tabular}{l|l}
+0! =	1             & 11! = 39.916.800  \\
+1! =	1             & 12! =	479.001.600	($\in \mathtt{int}$)\\
+2! =	2             & 13! =	6.227.020.800	\\
+3! =	6             & 14! =	87.178.291.200	\\
+4! =	24            & 15! =	1.307.674.368.000	\\
+5! =	120   			  & 16! =	20.922.789.888.000	\\
+6! =	720           & 17! =	355.687.428.096.000	\\
+7! =	5.040	        & 18! =	6.402.373.705.728.000	\\
+8! =	40.320	      & 19! =	121.645.100.408.832.000	\\
+9! =	362.880       & 20! =	2.432.902.008.176.640.000 $\in \mathtt{ll}$ \\
+10! =	3.628.800     & 21! =	51.090.942.171.709.400.000
+\end{tabular}
+
+max signed tint = 9.223.372.036.854.775.807 \\
+max unsigned tint = 18.446.744.073.709.551.615
+
+
+\section{Consejos}
+\subsection{Debugging}
+\begin{itemize}
+    \itemsep0em
+\item ¿Si n = 0 anda? (similar casos borde tipo n=1, n=2, etc)
+\item ¿Si hay puntos alineados anda?
+\item ¿Si es vacío anda?
+\item ¿Si hay multiejes anda?
+\item ¿Si no tiene aristas anda?
+\item ¿Si tiene ciclos anda?
+\item ¿Si tiene un triángulo anda?
+
+\item ¿Los arrays son suficientemente grandes? (siempre denle bastante de más por las dudas, pero tampoco se ceben como para que ya no entre en memoria XD)
+\item ¿Puede dar integer overflow? (SIEMPRE mirar el integer overflow con MUCHO cuidado)
+\item ¿Podés dividir por cero en algún caso?
+\item ¿Estás memorizando la recursión bien?
+\item ¿El caso base está bien hecho y se llega siempre?
+\item ¿Están bien puestas las cotas iniciales de la binary / inicialización del acumulador máximo/mínimo?
+
+\item ¿Estás inicializando bien antes de cada caso?
+\item ¿Le copiaste el input dos veces en el archivo de entrada (para ver que de igual y bien las dos veces)? [No aplica cuando viene solo una instancia de input]
+\item ¿Pasa los ejemplos? [No es joda, Leo se quedo afuera de la mundial por esto]
+\end{itemize}
+\subsection{Hitos de prueba}
+\begin{itemize}
+    \item \textbf{45min} todas las columnas de la tabla llena
+    \item \textbf{2h} todos conocen todo
+    \item \textbf{3h} reunión estratégica
+    \item \textbf{4h} reunión estratégica   
+\end{itemize}
+
+\end{multicols*}
+\end{document}
