@@ -6,9 +6,12 @@
 !*.kt
 !*.py
 !*.sh
-!*.txt
+
 !*.tex
-!notebook/images/
+!notebook/images/*
+!notebook/notebook.pdf
+!*.tex
 !*.in
 !.bashrc
 !*_completed.sha256
+
