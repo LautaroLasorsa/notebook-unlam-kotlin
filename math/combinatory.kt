@@ -1,8 +1,8 @@
 class Combinatory(n: Int, mod: Long) {
-    public f: LongArray = LongArray(n + 1) { 0 }
-    public inv: LongArray = LongArray(n + 1) { 0 }
-    public fi: LongArray = LongArray(n + 1) { 0 }
-    public mod: Long = mod
+    var f: LongArray = LongArray(n + 1) { 0 }
+    var inv: LongArray = LongArray(n + 1) { 0 }
+    var fi: LongArray = LongArray(n + 1) { 0 }
+    var mod: Long = mod
 
     init {  
         f[0] = 1
@@ -10,7 +10,7 @@ class Combinatory(n: Int, mod: Long) {
         inv[0] = 0
         for(i in 1..n){
             f[i] = i * f[i-1]%mod
-            inv[i] = mod - (mod / i) * inv[mod % i] % mod
+            inv[i] = mod - (mod / i) * inv[mod.toLong() % i] % mod
             fi[i] = fi[i-1] * inv[i] % mod
         }
     }
