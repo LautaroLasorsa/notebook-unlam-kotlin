@@ -1,5 +1,5 @@
 bin/clear.jar: bin/clear.kt
-	kotlinc bin/clear.kt -include-runtime -d clear.jar
+	kotlinc bin/clear.kt -include-runtime -d bin/clear.jar
 	
 clear: bin/clear.jar
 	java -jar bin/clear.jar
@@ -12,3 +12,7 @@ commit:
 
 test:
 	bash test.sh
+
+pull:
+	make clear 
+	git pull 
