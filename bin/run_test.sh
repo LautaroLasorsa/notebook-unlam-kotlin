@@ -23,7 +23,8 @@ fi
 echo "Corriendo pruebas de $carpeta$test"
 echo "Corriendo pruebas de $carpeta$test" >> $output
 
-codigo=$(head -n 1 "$test" | cut -c 3-)
+codigo=$(head -n 1 "$test" | cut -c 3- | tr -d '\r')
+
 kotlinc $codigo $test -include-runtime -d test.jar
 
 if [ -f test.jar ]; then

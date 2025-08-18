@@ -5,12 +5,14 @@ class Combinatory(n: Int, mod: Long) {
     var mod: Long = mod
 
     init {  
-        f[0] = 1
-        fi[0] = 1
-        inv[0] = 0
-        for(i in 1..n){
+        for(i in 0..1){
+            f[i] = 1
+            inv[i] = 1
+            fi[i] = 1
+        }
+        for(i in 2..n){
             f[i] = i * f[i-1]%mod
-            inv[i] = mod - (mod / i) * inv[mod.toLong() % i] % mod
+            inv[i] = mod - (mod / i) * inv[mod.toInt() % i] % mod
             fi[i] = fi[i-1] * inv[i] % mod
         }
     }
