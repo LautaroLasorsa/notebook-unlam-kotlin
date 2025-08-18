@@ -15,6 +15,5 @@
 !*.in
 !.bashrc
 !*_completed.sha256
-
 !!*.ini
-
+!math/theorems.txt
